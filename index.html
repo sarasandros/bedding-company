@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8"/>
+  <title>EMOOR TOP</title>
+  <link rel="stylesheet" href="css/style.css"/>
+  <link rel="stylesheet" href="css/jquery.pagepiling.css">
+
+  <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+
+  <div id="pagepiling">
+
+    <section class="section" id="section1">
+      <div id="kv_sec">
+        <picture>
+        <source media="(max-width: 599px)" srcset="images/tokyo@828.jpg 2x,images/tokyo@1528.jpg 3x">
+        <source media="(max-width: 959px)" srcset="images/tokyo@1528.jpg 2x">
+        <img src="images/tokyo.jpg" alt="EMOOR TOKYO">
+        </picture>
+       <div id="kv_title"><img src="images/kv_title.png"></div>
+     </div>
+    </section>
+
+    <section class="section" id="section2">
+    </section>
+
+    <section class="section" id="section3" style="white-space:pre;">
+      <section id="section3-1" class="anim_marker" style="white-space:pre;">
+      </section>
+    </section>
+
+    <section class="section" id="section4" style="white-space:pre;">
+      <section  id="section4-1" class="anim_marker" style="white-space:pre;">
+      </section>
+    </section>
+
+    <section class="section pp-scrollable" id="section5" style="white-space:pre;">
+      <section id="section5-1" class="anim_marker" style="white-space:pre;">
+      </section>
+    </section>
+
+
+  </div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.1/typed.min.js"></script>
+
+<script>
+function Marker(sectionClass){
+  $(sectionClass).addClass("is-active");
+};
+
+
+let currentPage;
+$(function() {
+  $('#pagepiling').pagepiling({
+      menu: '#nav',
+      sectionSelector: '.section',
+      sectionsColor: ['#131834', '#131834', '#fff', '#131834','#fff'],
+      anchors: ['page1', 'page2', 'page3', 'page4', 'page5'],
+      afterLoad: function(anchorLink, index){
+        console.log(anchorLink);
+        console.log(index);
+        currentPage = index;
+        if(index == 3){
+            $("#section3-1").typed({
+              contentType: 'html',
+              strings: ["漠然と睡眠は良くしたい。<br>けど、何をすればいいの？"],
+              cursorChar: "",
+              typeSpeed: 30
+            });
+            setTimeout(function() {
+              Marker('#section3-1');
+            }, 2000);
+       }else if(index == 4){
+          $("#section4-1").typed({
+            contentType: 'html',
+            strings: ["寝具選びって、良くわからない。"],
+            cursorChar: "",
+            typeSpeed: 30
+          });
+          setTimeout(function() {
+            Marker('#section4-1');
+          }, 2000);
+      }else if(index == 5){
+          $("#section5-1").typed({
+            contentType: 'html',
+            strings: ["正直、睡眠について<br>ずっと考えていられない。"],
+            cursorChar: "",
+            typeSpeed: 30
+          });
+          setTimeout(function() {
+            Marker('#section5-1');
+          }, 2000);
+       }
+      },
+  });
+});
+</script>
+
+
+
+</body>
+</html>
