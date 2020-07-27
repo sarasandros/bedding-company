@@ -95,7 +95,84 @@ img{
    background-size: 0% 100%;
    transition: 2s;
 }
-
 .anim_marker.is-active {
   background-size: 100% 100%;
+}
+
+#section6-1{
+	position: absolute;
+	top:10%;
+	left: 50%;
+}
+
+#section6-1 span{
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 57px;
+	height: 57px;
+	margin-left: -12px;
+	border-left: 15px solid #131834;
+	border-bottom: 15px solid #131834;
+	-webkit-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	-webkit-animation: sdb2 2s infinite;
+	animation: sdb2 2s infinite;
+	opacity: 1;
+	box-sizing: border-box;
+}
+#section6-1 span:nth-of-type(1){
+	-webkit-animation-delay: 0s;
+	animation-delay: 0s;
+}
+#section6-1 span:nth-of-type(2){
+	top:60%;
+	-webkit-animation-delay: .15s;
+	animation-delay: .15s;
+}
+#section6-1 span:nth-of-type(3){
+	top:120%;
+	-webkit-animation-delay: .3s;
+	animation-delay: .3s;
+}
+
+@-webkit-keyframes sdb2 {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes sdb2 {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+#panels{
+	display: flex;
+	justify-content: space-between;
+	width:80%;
+	position: absolute;
+	top:50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+#panels .left_side,
+#panels .right_side{
+	width: 50%;
+}
+#panels .left_side div{
+	display: block;
+	margin-top: -32px;
 }
