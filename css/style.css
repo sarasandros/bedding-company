@@ -4,6 +4,36 @@ charset "UTF-8";
    License: none (public domain#our_history)
 */
 
+.DropdownMenu {
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    top: 145.75px;
+    padding: 25px 0;
+    min-width: 200px;
+    max-width: 270px;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    text-align: left;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-top: none;
+    transition: all 0.3s ease-in-out;
+}
+
+.DropdownMenu[aria-hidden="false"] {
+    opacity: 1;
+    visibility: visible;
+    position: fixed;
+    top: 145.75px;
+}
+
+
+.Footer--withMargin{
+	margin-top: -20%;
+}
+
 html, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -49,6 +79,12 @@ table {
 	border-spacing: 0;
 }
 
+#pagepiling{
+	display: block;
+}
+#pagepiling.is-inactive{
+	display: none;
+}
 
 #last_part ul li{
 	text-align: center
@@ -56,7 +92,7 @@ table {
 
 
 #shopify-section-footer{
-	display: none;
+	display: block;
 }
 #pp-nav{
 		display: none;
@@ -71,6 +107,16 @@ table {
 }
 #panels_sp{
 	display: block;
+	margin-top: -40%;
+}
+
+html,
+body{
+	overflow: hidden;
+}
+
+.overflow-auto{
+	overflow: auto;
 }
 
 img{
@@ -252,6 +298,13 @@ img{
     opacity: 0;
   }
 }
+
+
+#section7{
+	opacity: 0;
+}
+
+
 #solution{
 	position: absolute;
 	top:35%;
@@ -313,8 +366,7 @@ img{
 		width:90%;
 		margin: 0 auto;
 		position: relative;
-		padding-bottom: 25%;
-
+		margin-bottom: 70%;
 	}
 	.card_front,
 	.card_back{
@@ -329,14 +381,16 @@ img{
 	.card_back{
 		transform:rotateY(180deg);
 	}
-	.card:hover .card_front{
+	.card_clicked .card_front{
 		transform:rotateY(-180deg);
 	}
-	.card:hover .card_back{
+	.card_clicked .card_back{
 		transform:rotateY(0);
 	}
 
-
+.card:nth-of-type(3){
+	margin-bottom: 60%;
+}
 
 /* .left_side{
 	width: 438.915px;
@@ -362,9 +416,6 @@ img{
 	max-width: 300px;
 } */
 
- #section7-1{
-	margin-top: -45%;
-}
 
 
 #board2{
@@ -466,7 +517,7 @@ img{
 	width: 100%;
 	height: auto;
 	background: #dcdcdc;
-	position: absolute;
+	position: relative;
 }
 #triangle{
 	width: 0;
@@ -482,7 +533,7 @@ img{
 }
 #sub_title{
 	text-align: center;
-	margin: 0;
+	margin: -10% 0 -20% 0;
 	font-size: 130%;
 }
 #sub_title span{
@@ -500,7 +551,7 @@ img{
 	width: 80%;
 	margin: 0 auto;
 	display: block;
-	margin-top: -30%;
+	margin-top: -40%;
 }
 .karte a{
 	display: block;
@@ -525,10 +576,13 @@ img{
 
 @media screen and (max-width:320px){
 	#space_br{
-		display: none;
+		display: block;
 	}
+	#panels_sp{
+	 margin-top: -45%;
+ }
 	#section7-1 p{
-		font-size: 75%;
+		font-size: 85%;
 		padding-top: 35%;
 	}
 	.button{
@@ -552,6 +606,12 @@ img{
 
 /* タブレット用の設定 */
 @media screen and (min-width:559px){
+	.Footer--withMargin{
+		margin-top: -10%;
+	}
+	#sub_title{
+		margin: -5% 0 -10% 0;
+	}
 	#space_br{
 		display: none;
 	}
@@ -568,14 +628,36 @@ img{
 		display: block;
 		padding-top: 30%;
 	}
-	.card{
-			perspective:150rem;
-				-moz-perspective: 150rem;
-			width:60%;
-			margin: 0 auto;
-			position: relative;
-			padding-bottom: 20%;
-		}
+		.card{
+				perspective:150rem;
+					-moz-perspective: 150rem;
+				width:60%;
+				margin: 0 auto;
+				position: relative;
+			  margin-bottom: 60%;
+			}
+			.card:nth-of-type(3){
+				margin-bottom: 40%;
+			}
+			.card_front,
+			.card_back{
+				width:100%;
+				transition:.8s;
+				position: absolute;
+						top: 0;
+						left: 0;
+						backface-visibility: hidden;
+						-webkit-backface-visibility: hidden;
+			}
+			.card_back{
+				transform:rotateY(180deg);
+			}
+			.card_clicked .card_front{
+				transform:rotateY(-180deg);
+			}
+			.card_clicked .card_back{
+				transform:rotateY(0);
+			}
 		#last_part ul{
 			width: 60%;
 			margin: 0 auto;
@@ -587,9 +669,7 @@ img{
 			font-size: 130%;
 			line-height: 2;
 		}
-		#sub_title{
-			font-size: 150%;
-		}
+
 		#last_part .offering{
 			width: 80%;
 			margin: 0 auto;
@@ -631,6 +711,9 @@ img{
 
 /* PC用の設定 */
 @media screen and (min-width:1025px){
+	.Footer--withMargin{
+		margin-top: -5%;
+	}
 	#space_br{
 		display: none;
 	}
@@ -971,6 +1054,7 @@ img{
 
 	#section7-1{
  	margin-top: 0px;
+	padding-top: 5%;
  }
 
 	#section7-1 p{
@@ -982,7 +1066,7 @@ img{
 		width: 100%;
 		height: auto;
 		background: #dcdcdc;
-		position: absolute;
+		position: relative;
 	}
 	#triangle{
 		width: 0;
@@ -998,7 +1082,7 @@ img{
 	}
 	#sub_title{
 		text-align: center;
-		margin: 30px 0;
+		margin: -2% 0;
 	}
 	#sub_title span{
 		font-weight: bold;
