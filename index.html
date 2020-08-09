@@ -13,18 +13,20 @@
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
+
+    <script>
+      (function(d) {
+        var config = {
+          kitId: 'hpi0bkp',
+          scriptTimeout: 3000,
+          async: true
+        },
+        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+      })(document);
+    </script>
 </head>
 
-<script>
-  (function(d) {
-    var config = {
-      kitId: 'hpi0bkp',
-      scriptTimeout: 3000,
-      async: true
-    },
-    h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-  })(document);
-</script>
+
 
 <body>
 
@@ -40,8 +42,7 @@
        <div id="kv_title">
          <img src="https://cdn.shopify.com/s/files/1/0345/4238/7337/files/kv_title.png?v=1595854357">
        </div>
-       <div class="scroll"><a href="#"><span></span></a></div>
-      <div class="scroll_moji">Scroll</div>
+       <!-- <div class="scroll"><a href="#"><span></span>Scroll</a></div> -->
      </div>
     </section>
 
@@ -85,13 +86,13 @@
     <div id="panels">
       <div class="left_side">
          <div class="flip-boards">
-          <div id="board2" class="board left">
+          <div id="board2" class="board left" data-num = "1">
            <div class="front"><img src="https://cdn.shopify.com/s/files/1/0345/4238/7337/files/panel2_p.png?v=1595854393"></div>
            <div class="flipped"><img src="https://cdn.shopify.com/s/files/1/0345/4238/7337/files/panel2_s.png?v=1595854413"></div>
           </div>
          </div>
         <div class="flip-boards">
-          <div id="board3" class="board left">
+          <div id="board3" class="board left" data-num = "2">
             <div id="panel3" class="front"><img src="https://cdn.shopify.com/s/files/1/0345/4238/7337/files/panel3_p.png?v=1595854433"></div>
             <div class="flipped"><img src="https://cdn.shopify.com/s/files/1/0345/4238/7337/files/panel3_s_8e7486b5-618d-4f5b-a545-8c1c832e18ae.png?v=1596601394"></div>
           </div>
@@ -100,7 +101,7 @@
 
       <div class="right_side">
         <div class="flip-boards">
-          <div id="board1" class="board left">
+          <div id="board1" class="board left" data-num = "3">
             <div class="front"><img src="https://cdn.shopify.com/s/files/1/0345/4238/7337/files/panel1_p.png?v=1595854482"></div>
             <div class="flipped"><img src="https://cdn.shopify.com/s/files/1/0345/4238/7337/files/panel1_s_acad524f-986a-45e0-bdd2-aa5ff6b4e24f.png?v=1596603288"></div>
           </div>
@@ -140,8 +141,8 @@
           </ul>
 
           <ul class="footer_btn">
-              <li class="karte"><a href="https://emoor-tokyo.myshopify.com/pages/sleep-karte">睡眠カルテをつくる</a></li>
-              <li class="goto_top"><a href="https://emoor-tokyo.myshopify.com/pages/brand-story">ページTOPに戻る</a></li>
+              <li class="karte"><a href="#">睡眠カルテをつくる</a></li>
+              <li class="goto_top"><a href="https://reverent-snyder-93f1d2.netlify.app/">ページTOPに戻る</a></li>
           </ul>
 
        </div>
@@ -238,14 +239,38 @@ $(function() {
 });
 
 
+ $('.card').click(function() {
+   if($(this).hasClass('card_clicked')){
+   	$(this).removeClass('card_clicked');
+   } else{
+   	$(this).addClass('card_clicked');
+   }
+ });
 
-$('.card').click(function(e) {
-  if($(this).hasClass('card_clicked')){
-  	$(this).removeClass('card_clicked');
-  } else{
-  	$(this).addClass('card_clicked');
+
+let whetherHover = {
+  1 : true,
+  2 : true,
+  3 : true
+};
+
+let dataNum;
+$('.board').mouseover(function() {
+  dataNum = $(this).attr('data-num');
+  if(whetherHover[dataNum]){
+    $(this).addClass('active-panel');
+    whetherHover[dataNum] = false;
+  };
+});
+
+$('.board').click(function() {
+  if(!whetherHover[dataNum] && $(this).hasClass('active-panel')){
+    $(this).removeClass('active-panel');
+  }else if(!whetherHover[dataNum]){
+    $(this).addClass('active-panel');
   }
 });
+
 
 </script>
 
